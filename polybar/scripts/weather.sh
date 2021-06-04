@@ -4,8 +4,8 @@ get_icon() {
     echo %{T9}%{T-}
 }
 
-KEY="3d7064569e102028f7d15ddb52a38165"
-CITY="General Trias, PH"
+KEY="OPENWEATHER API KEY HERE"
+CITY="YOUR PLACE HERE"
 UNITS="metric"
 SYMBOL="°"
 
