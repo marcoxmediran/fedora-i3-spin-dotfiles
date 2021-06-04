@@ -1,0 +1,36 @@
+; Polybar Config
+[modules]
+include-file = ~/.config/polybar/modules
+
+[colors]
+include-file = ~/.config/polybar/colors
+
+[bar/gruv]
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = true
+fixed-center = true
+width = 100%
+height = 16
+border-size = 4
+border-color = ${colors.background}
+
+font-0 = Google Sans Display:size=8;2
+font-1 = Google Sans:size=8;2
+font-2 = FontAwesome:size=8;2
+font-3 = FiraCode Nerd Font:size=9.425;2
+font-4 = DroidSansMono Nerd Font Mono:size=12;3
+font-5 = DroidSansMono Nerd Font Mono:size=16;3
+font-6 = DroidSansMono Nerd Font Mono:size=13;3
+font-7 = Material Design Icons:size=8;2
+font-8 = DroidSansMono Nerd Font Mono:size=13.5;3
+font-9 = Material Icons Two Tone:size=12;4
+font-10 = Material Icons Two Tone:size=11;2
+font-11 = Material Icons Two Tone:size=10;3
+
+modules-left = lf menu rf space i3
+modules-center = now-playing space lbg weather rbg
+modules-right = lbg wifi rbg space lp keyb rp space la battery ba pulseaudio ra space lf date rf
+
+
+; vim:set ft=dosini:

@@ -1,0 +1,275 @@
+; Polybar modules
+
+[module/menu]
+type = custom/menu
+expand-right = true
+format-background = ${colors.foreground}
+format-foreground = ${colors.black}
+label-close = 
+label-open = 
+menu-0-0 = Poweroff
+menu-0-1 = Suspend
+menu-0-0-exec = systemctl poweroff
+menu-0-1-exec = systemctl suspend
+format = <label-toggle>%{T1}<menu>%{T-}
+label-separator = "  "
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+label-focused = %icon%
+label-unfocused = %icon%
+label-urgent = %icon%
+label-mode = %mode%
+label-focused-padding = 4
+label-unfocused-padding = 4
+label-urgent-padding = 4
+label-mode-padding = 4
+label-focused-background = ${colors.background} 
+label-unfocused-background = ${colors.background}
+label-urgent-background = ${colors.background}
+label-mode-background = ${colors.background}
+label-focused-foreground = ${colors.dark-aqua}
+label-unfocused-foreground = ${colors.foreground}
+label-urgent-foreground = ${colors.red}
+label-mode-foreground = ${colors.dark-aqua}
+label-separator = 
+ws-icon-0 = 1;%{T6}%{T-}
+ws-icon-1 = 2;%{T7}%{T-}
+ws-icon-2 = 3;%{T4}%{T-}
+ws-icon-3 = 4;%{T7}%{T-}
+ws-icon-4 = 5;%{T7}漣%{T-}
+ws-icon-5 = 6;%{T10}%{T-}
+
+[module/now-playing]
+type = custom/script
+;exec = ~/.config/polybar/scripts/now-playing.py -f '{icon}  {artist} - {title}' --icon-playing '%{T5}%{T2}' --icon-none '%{T5}%{T2} No Music Playing' --icon-paused '%{T5}%{T2}' --icon-stopped '%{T5}%{T2}'
+;tail = true
+exec = ~/.config/polybar/scripts/now-playing.sh
+interval = 1
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/weather.sh
+interval = 600
+label-background = #282828
+label-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+full-at = 100
+battery = BAT1
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+format-charging-background = ${colors.aqua}
+format-discharging-background = ${colors.aqua}
+format-full-background = ${colors.aqua}
+format-charging-foreground = ${colors.black}
+format-discharging-foreground = ${colors.black}
+format-full-foreground = ${colors.black}
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
+animation-charging-9 = 
+animation-charging-framerate = 250
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = @DEFAULT_SINK@
+format-volume = <label-volume>
+format-muted = <label-muted>
+format-volume-background = ${colors.aqua}
+format-muted-background = ${colors.aqua}
+format-volume-foreground = ${colors.black}
+format-muted-foreground = ${colors.black}
+label-volume = %{T5}%{T-} %{T1}%percentage%%%{T-}
+label-muted = %{T5}ﳌ%{T-} %{T1}%percentage%%%{T-}
+use-ui-max = false
+interval = 2
+click-right = pavucontrol
+
+[module/memory]
+type=internal/memory
+interval=5
+format = <label>
+format-background = ${colors.blue}
+format-foreground = ${colors.black}
+label = "%{T5}%{T1} %gb_used%  "
+
+[module/cpu]
+type=internal/cpu
+interval = 5
+format = <label>
+format-background = ${colors.blue}
+format-foreground = ${colors.black}
+label = %{T5}﬙%{T1} %percentage%%
+
+[module/keyb]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+format = <label-layout> <label-indicator>
+format-background = ${colors.purple}
+format-foreground = ${colors.black}
+label-layout = %{T6}%{T-}
+label-indicator-on = %name%
+label-indicator-off =  %name%
+label-indicator-on-capslock = 
+label-indicator-off-capslock = 
+
+[module/wifi]
+type = internal/network
+interface = wlp4s0
+format-connected = %{T9}<label-connected>%{T-}
+format-disconnected = %{T9}<label-disconnected>%{T-}
+label-connected = %{T11}%{T-} 
+label-disconnected = %{T11}%{T-}
+label-connected-foreground = ${colors.foreground}
+label-disconnected-foreground = ${colors.foreground}
+label-connected-background = #282828
+label-disconnected-background = #282828
+
+[module/date]
+type = internal/date
+date = %{T1}%a, %b %e%%{T-}  %{T1}|%{T-}  %{T1}%H : %M%%{T-}
+label = %date%
+label-padding = 0
+label-foreground = ${colors.black}
+format = <label>
+format-background = ${colors.foreground}
+
+[module/lf]
+type = custom/text
+content = 
+content-foreground = ${colors.foreground}
+
+[module/rf]
+type = custom/text
+content = 
+content-foreground = ${colors.foreground}
+
+[module/la]
+type = custom/text
+content = 
+content-foreground = ${colors.aqua}
+
+[module/ra]
+type = custom/text
+content = 
+content-foreground = ${colors.aqua}
+
+[module/lp]
+type = custom/text
+content = 
+content-foreground = ${colors.purple}
+
+[module/rp]
+type = custom/text
+content = 
+content-foreground = ${colors.purple}
+
+[module/lb]
+type = custom/text
+content = 
+content-foreground = ${colors.blue}
+
+[module/rb]
+type = custom/text
+content = 
+content-foreground = ${colors.blue}
+
+[module/ly]
+type = custom/text
+content = 
+content-foreground = ${colors.yellow}
+
+[module/ry]
+type = custom/text
+content = 
+content-foreground = ${colors.yellow}
+
+[module/lg]
+type = custom/text
+content = 
+content-foreground = ${colors.green}
+
+[module/rg]
+type = custom/text
+content = 
+content-foreground = ${colors.green}
+
+[module/lo]
+type = custom/text
+content = 
+content-foreground = ${colors.orange}
+
+[module/ro]
+type = custom/text
+content = 
+content-foreground = ${colors.orange}
+
+[module/lr]
+type = custom/text
+content = 
+content-foreground = ${colors.red}
+
+[module/rr]
+type = custom/text
+content = 
+content-foreground = ${colors.red}
+
+[module/lbl]
+type = custom/text
+content = 
+content-foreground = ${colors.black}
+
+[module/rbl]
+type = custom/text
+content = 
+content-foreground = ${colors.black}
+
+[module/lbg]
+type = custom/text
+content = 
+content-foreground = #282828
+
+[module/rbg]
+type = custom/text
+content = 
+content-foreground = #282828
+
+[module/space]
+type = custom/text
+content = "  "
+
+[module/ba]
+type = custom/text
+content="  "
+content-background = ${colors.aqua}
+
+; vim:set ft=dosini:
